@@ -5,8 +5,9 @@ const getRandomInt = (min, max) => {
 const domLoad = document.addEventListener('DOMContentLoaded', () => {
     const random = getRandomInt(1, 151);
     fetchData(random);
-    //Una vez que carga el DOM se hace el fetch
 })
+
+
 
 const fetchData = async (id) => {
     try {
@@ -21,12 +22,14 @@ const fetchData = async (id) => {
             defensa: data.stats[2].base_stat,
             especial: data.stats[3].base_stat
         }
-        console.log(data);
+        // console.log(data);
         renderCard(pokemon);
     } catch (err) {
         console.log(err)
     }
 }
+
+
 
 const renderCard = (pokemon) => {
     const flex = document.getElementById('flex');
@@ -41,10 +44,7 @@ const renderCard = (pokemon) => {
     clone.querySelectorAll('.card-pokemon-stats h3')[0].textContent = `Attack: ${pokemon.ataque}`
     clone.querySelectorAll('.card-pokemon-stats h3')[1].textContent = `Defense: ${pokemon.defensa}`
     clone.querySelectorAll('.card-pokemon-stats h3')[2].textContent = `Special: ${pokemon.especial}`
-
+    
     fragment.appendChild(clone);
     flex.appendChild(fragment);
-
-
-
 }
